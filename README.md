@@ -6,6 +6,7 @@
 
 | 方式 | 說明 |
 |---|---|
+| 手機／任何裝置（推薦） | https://kwchenm.github.io/mengshou-adventure/ |
 | 在這台電腦玩 | 直接雙擊 `index.html`，用瀏覽器開啟 |
 | 傳到平板或手機 | 把 `dist/萌獸冒險.html` 這**一個檔案**傳過去，用瀏覽器開啟 |
 | 線上版 | https://claude.ai/artifact/KqFViwYdQmYD5rB6aPNQdN（目前只有你的帳號能開，要給孩子玩請用頁面上的「分享」） |
@@ -38,3 +39,7 @@
 
 改完後執行 `node tools/build.mjs`，會重新產生 `dist/` 裡的單一檔案版本。
 `dev/gallery.html` 可以一次預覽所有萌獸的造型（需要用本機伺服器開啟）。
+
+## 更新網站
+
+修改後執行 `git add -A`、`git commit -m "說明"`、`git push`，約 1 分鐘後 GitHub Pages 會自動更新。
