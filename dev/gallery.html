@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>萌獸美術檢查</title>
+<style>
+  body { font-family: 'Microsoft JhengHei', sans-serif; background: #EAF6FF; margin: 0; padding: 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .card { background: #fff; border-radius: 14px; border: 3px solid #23305E; padding: 6px; text-align: center; }
+  .card svg { width: 140px; height: 140px; }
+  .card b { display: block; font-size: 14px; }
+  .scenes { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; margin-top: 20px; }
+  .scenes svg { width: 100%; border-radius: 12px; }
+  .eye.blink { animation: none; }
+</style>
+</head>
+<body>
+<div class="grid" id="g"></div>
+<div class="scenes" id="s"></div>
+<script src="../js/util.js"></script>
+<script src="../js/data/types.js"></script>
+<script src="../js/data/moves.js"></script>
+<script src="../js/data/species.js"></script>
+<script src="../js/art.js"></script>
+<script>
+  const g = document.getElementById('g');
+  const big = new URLSearchParams(location.search).get('big');
+  if (big) document.head.insertAdjacentHTML('beforeend', `<style>.grid{grid-template-columns:repeat(auto-fill,minmax(${big}px,1fr))}.card svg{width:${big - 10}px;height:${big - 10}px}</style>`);
+  const Q = new URLSearchParams(location.search);
+  const from = +(Q.get('from') || 0), n = +(Q.get('n') || 999);
+  if (Q.get('noscene')) document.getElementById('s').remove();
+  g.innerHTML = G.DEX_ORDER.slice(from, from + n).map(k => `<div class="card">${G.Art.mon(k)}<b>${G.SPECIES[k].no}. ${G.SPECIES[k].name}</b></div>`).join('');
+  if (document.getElementById('s')) document.getElementById('s').innerHTML =Object.keys(G.Art.SCENES).map(t => `<div>${G.Art.scene(t)}<b>${t}</b></div>`).join('');
+</script>
+</body>
+</html>
